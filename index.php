@@ -11,12 +11,20 @@ spl_autoload_register(function ($class_name) {
     include $replace . '.php';
 });
 
-process($argv);
-
-function process($argv)
-{
-    new Terminal(
+if ($_FILES['csv']) {
+    new Import(
         Connection::getInstance()->getConnection(),
-        $argv
+        new Redirect(),
+        $_FILES['csv']['tmp_name']
     );
+} else {
+    if (isset($argv[1])) {
+        new Import(
+            Connection::getInstance()->getConnection(),
+            new Terminal(),
+            $argv[1]
+        );
+    } else {
+        echo 'path to a csv file is not provided';
+    }
 }
