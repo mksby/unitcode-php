@@ -2,7 +2,7 @@
 <html>
     <head></head>
     <body>
-        <form action="/index.php" method="POST" enctype="multipart/form-data">
+        <form action="/backend-php-admin/index.php" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <label for="csv">File: </label>
                 <input type="file" id="csv" name="csv" />
